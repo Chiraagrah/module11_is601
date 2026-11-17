@@ -19,6 +19,7 @@ WORKDIR /app
 RUN apt-get update && \
    apt-get upgrade -y && \
    rm -rf /var/lib/apt/lists/* && \
+   python -m pip install --no-cache-dir --upgrade "setuptools>=84.2.1" && \
    groupadd -r appgroup && \
    useradd -r -g appgroup appuser
 
