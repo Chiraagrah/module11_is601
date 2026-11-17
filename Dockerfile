@@ -21,6 +21,7 @@ WORKDIR /app
 
 RUN apt-get update && \
    apt-get upgrade -y && \
+   apt-get purge -y python3-setuptools && \
    rm -rf /var/lib/apt/lists/* && \
    python -m pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1" wheel && \
    groupadd -r appgroup && \
