@@ -19,7 +19,6 @@ WORKDIR /app
 RUN apt-get update && \
    apt-get upgrade -y && \
    rm -rf /var/lib/apt/lists/* && \
-   python -m pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1" wheel && \
    groupadd -r appgroup && \
    useradd -r -g appgroup appuser
 
