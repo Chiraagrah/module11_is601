@@ -6,10 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /install
 
 COPY requirements.txt .
-RUN apt-get update && \
-   apt-get install -y --no-install-recommends gcc python3-dev libssl-dev && \
-   rm -rf /var/lib/apt/lists/* && \
-   python -m pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1" wheel && \
+RUN python -m pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1" wheel && \
    pip install --no-cache-dir --prefix=/install -r requirements.txt
 
 FROM python:3.11-slim
@@ -21,7 +18,6 @@ WORKDIR /app
 
 RUN apt-get update && \
    apt-get upgrade -y && \
-   apt-get purge -y python3-setuptools && \
    rm -rf /var/lib/apt/lists/* && \
    python -m pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1" wheel && \
    groupadd -r appgroup && \
